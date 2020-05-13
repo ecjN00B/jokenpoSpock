@@ -31,52 +31,32 @@ public class MovementController {
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<MovementResponse>> findAll() {
-		try {
-			List<MovementResponse> response = movementService.findAll();
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		List<MovementResponse> response = movementService.findAll();
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{playerId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MovementResponse> findById(@PathVariable(name = "playerId") UUID playerId) {
-		try {
-			MovementResponse response = movementService.findById(playerId);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		MovementResponse response = movementService.findById(playerId);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MovementResponse> create(@RequestBody @Valid MovementRequest movementRequest) {
-		try {
-			MovementResponse response = movementService.create(movementRequest);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		MovementResponse response = movementService.create(movementRequest);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@PutMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MovementResponse> update(@RequestBody @Valid MovementRequest movementRequest) {
-		try {
-			MovementResponse response = movementService.update(movementRequest);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		MovementResponse response = movementService.update(movementRequest);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Boolean> delete(@PathVariable(name = "uuid") UUID uuid) {
-		try {
-			boolean response = movementService.delete(uuid);
-			return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		boolean response = movementService.delete(uuid);
+		return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
 	}
 
 }

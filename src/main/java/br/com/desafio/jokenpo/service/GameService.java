@@ -4,6 +4,6 @@ import br.com.desafio.jokenpo.dto.response.GameResponse;
 
 public interface GameService {
 	
-	public GameResponse play() throws Exception;
+	public GameResponse play();
 
 }

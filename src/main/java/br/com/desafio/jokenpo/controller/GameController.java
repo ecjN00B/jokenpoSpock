@@ -18,34 +18,10 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 
-//	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<PlayerResponse>> findAll() {
-//		try {
-//			List<PlayerResponse> response = playerService.findAll();
-//			return new ResponseEntity<>(response, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-//
-//	@GetMapping(value = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<PlayerResponse> findById(@PathVariable(name = "uuid") UUID uuid) {
-//		try {
-//			PlayerResponse response = playerService.findById(uuid);
-//			return new ResponseEntity<>(response, HttpStatus.OK);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-
 	@PostMapping(value = "/play", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<GameResponse> play() {
-		try {
-			GameResponse response = gameService.play();
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		GameResponse response = gameService.play();
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 }

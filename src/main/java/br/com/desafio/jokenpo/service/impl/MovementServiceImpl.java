@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.desafio.jokenpo.dto.request.MovementRequest;
 import br.com.desafio.jokenpo.dto.response.MovementResponse;
@@ -22,11 +24,11 @@ public class MovementServiceImpl implements MovementService {
 	private MovementRepository movementRepository;
 
 	@Override
-	public MovementResponse findById(UUID playerId) throws Exception {
+	public MovementResponse findById(UUID playerId) {
 		MovementResponse movement = movementRepository.findById(playerId);
 		
 		if(movement == null) {
-			throw new Exception("Movimento não cadastrado na base");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Movimento não cadastrado na base");
 		}
 		
 		return movement;
@@ -38,23 +40,23 @@ public class MovementServiceImpl implements MovementService {
 	}
 
 	@Override
-	public MovementResponse create(MovementRequest movementRequest) throws Exception {
+	public MovementResponse create(MovementRequest movementRequest) {
 		if(movementRepository.playerPerformedMovement(movementRequest.getPlayerId())) {
-			throw new Exception("Jogador já realizou um movimento");
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "Jogador já realizou um movimento");
 		}
 		if(!playerRepository.playerExists(movementRequest.getPlayerId())) {
-			throw new Exception("Usuário não cadastrado na base");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não cadastrado na base");
 		}
 		MovementResponse movementResponse = movementRepository.create(movementRequest.toResponse());
 		return movementResponse;
 	}
 
 	@Override
-	public MovementResponse update(MovementRequest movementRequest) throws Exception {
+	public MovementResponse update(MovementRequest movementRequest) {
 		MovementResponse movement = movementRepository.update(movementRequest.toResponse());
 		
 		if(movement == null) {
-			throw new Exception("Movimento não cadastrado na base");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Movimento não cadastrado na base");
 		}
 		
 		return movement;

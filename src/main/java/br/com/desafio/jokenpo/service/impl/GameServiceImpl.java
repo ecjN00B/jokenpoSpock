@@ -5,7 +5,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.desafio.jokenpo.domain.Game;
 import br.com.desafio.jokenpo.dto.response.GameResponse;
@@ -28,11 +30,11 @@ public class GameServiceImpl implements GameService {
 	private Game gameDomain;
 
 	@Override
-	public GameResponse play() throws Exception {
+	public GameResponse play() {
 		if (this.allPlayersAlreadyPerformedAMovement()) {
 			return gameDomain.getWinnersList(movementRepository.findAll());
 		}
-		throw new Exception("Todos os Jogadores precisam efetuar seu movimento");
+		throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED, "Todos os Jogadores precisam efetuar seu movimento");
 	}
 
 	private boolean allPlayersAlreadyPerformedAMovement() {

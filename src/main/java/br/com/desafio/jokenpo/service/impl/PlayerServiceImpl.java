@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.desafio.jokenpo.dto.request.PlayerRequest;
 import br.com.desafio.jokenpo.dto.response.PlayerResponse;
@@ -22,11 +24,11 @@ public class PlayerServiceImpl implements PlayerService {
 	private MovementRepository movementRepository;
 	
 	@Override
-	public PlayerResponse findById(UUID uuid) throws Exception {
+	public PlayerResponse findById(UUID uuid) {
 		PlayerResponse player = playerRepository.findById(uuid);
 		
 		if(player == null) {
-			throw new Exception("Usuário não cadastrado na base");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não cadastrado na base");
 		}
 		
 		return player;
@@ -38,20 +40,20 @@ public class PlayerServiceImpl implements PlayerService {
 	}
 
 	@Override
-	public PlayerResponse create(PlayerRequest playerRequest) throws Exception {
+	public PlayerResponse create(PlayerRequest playerRequest) {
 		if(playerRepository.playerExists(playerRequest.getName())) {
-			throw new Exception("Usuário já cadastrado");
+			throw new ResponseStatusException(HttpStatus.CONFLICT, "Usuário já cadastrado");
 		}
 		PlayerResponse playerUuid = playerRepository.create(playerRequest.getName());
 		return playerUuid;
 	}
 
 	@Override
-	public PlayerResponse update(PlayerRequest playerRequest) throws Exception {
+	public PlayerResponse update(PlayerRequest playerRequest) {
 		PlayerResponse player = playerRepository.update(playerRequest.toResponse());
 		
 		if(player == null) {
-			throw new Exception("Usuário não cadastrado na base");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não cadastrado na base");
 		}
 		
 		return player;

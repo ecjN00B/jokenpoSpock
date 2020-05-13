@@ -8,13 +8,13 @@ import br.com.desafio.jokenpo.dto.response.PlayerResponse;
 
 public interface PlayerService {
 	
-	public PlayerResponse findById(UUID uuid) throws Exception;
+	public PlayerResponse findById(UUID uuid);
 
 	public List<PlayerResponse> findAll();
 	
-	public PlayerResponse create(PlayerRequest playerRequest) throws Exception;
+	public PlayerResponse create(PlayerRequest playerRequest);
 	
-	public PlayerResponse update(PlayerRequest playerRequest) throws Exception;
+	public PlayerResponse update(PlayerRequest playerRequest);
 	
 	public boolean delete(UUID uuid);
 

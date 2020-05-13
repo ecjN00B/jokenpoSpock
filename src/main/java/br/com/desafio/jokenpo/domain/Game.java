@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.desafio.jokenpo.dto.response.GameResponse;
 import br.com.desafio.jokenpo.dto.response.MovementResponse;
@@ -24,13 +26,13 @@ public class Game {
 	@Autowired
 	private PlayerService playerService;
 
-	public GameResponse getWinnersList(List<MovementResponse> movements) throws Exception {
+	public GameResponse getWinnersList(List<MovementResponse> movements) {
 		List<PlayerResponse> players = playerService.findAll();
 		List<PlayerResponse> winners = new ArrayList<>();
 		List<MovementEnum> winnersMovements = new ArrayList<>();
 
 		if (players.size() == 0 || movements.size() == 0) {
-			throw new Exception("Não há jogadores/movimentos cadastrados");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não há jogadores/movimentos cadastrados");
 		}
 
 		GameResponse response = new GameResponse();

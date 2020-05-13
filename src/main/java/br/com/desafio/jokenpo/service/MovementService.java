@@ -8,13 +8,13 @@ import br.com.desafio.jokenpo.dto.response.MovementResponse;
 
 public interface MovementService {
 	
-	public MovementResponse findById(UUID playerId) throws Exception;
+	public MovementResponse findById(UUID playerId);
 
 	public List<MovementResponse> findAll();
 	
-	public MovementResponse create(MovementRequest movementRequest) throws Exception;
+	public MovementResponse create(MovementRequest movementRequest);
 	
-	public MovementResponse update(MovementRequest movementRequest) throws Exception;
+	public MovementResponse update(MovementRequest movementRequest);
 	
 	public boolean delete(UUID playerId);
 

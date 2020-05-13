@@ -31,52 +31,32 @@ public class PlayerController {
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PlayerResponse>> findAll() {
-		try {
-			List<PlayerResponse> response = playerService.findAll();
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		List<PlayerResponse> response = playerService.findAll();
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PlayerResponse> findById(@PathVariable(name = "uuid") UUID uuid) {
-		try {
-			PlayerResponse response = playerService.findById(uuid);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		PlayerResponse response = playerService.findById(uuid);
+		return new ResponseEntity<>(response, HttpStatus.OK);	
 	}
 
 	@PostMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PlayerResponse> create(@RequestBody @Valid PlayerRequest playerRequest) {
-		try {
-			PlayerResponse response = playerService.create(playerRequest);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		PlayerResponse response = playerService.create(playerRequest);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@PutMapping(value = "", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PlayerResponse> update(@RequestBody @Valid PlayerRequest playerRequest) {
-		try {
-			PlayerResponse response = playerService.update(playerRequest);
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		PlayerResponse response = playerService.update(playerRequest);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/{uuid}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Boolean> delete(@PathVariable(name = "uuid") UUID uuid) {
-		try {
-			boolean response = playerService.delete(uuid);
-			return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		boolean response = playerService.delete(uuid);
+		return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
 	}
 
 }
