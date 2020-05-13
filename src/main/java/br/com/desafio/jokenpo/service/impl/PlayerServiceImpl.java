@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.desafio.jokenpo.dto.request.PlayerRequest;
 import br.com.desafio.jokenpo.dto.response.PlayerResponse;
+import br.com.desafio.jokenpo.repository.MovementRepository;
 import br.com.desafio.jokenpo.repository.PlayerRepository;
 import br.com.desafio.jokenpo.service.PlayerService;
 
@@ -16,6 +17,9 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Autowired
 	private PlayerRepository playerRepository;
+	
+	@Autowired
+	private MovementRepository movementRepository;
 	
 	@Override
 	public PlayerResponse findById(UUID uuid) throws Exception {
@@ -55,6 +59,7 @@ public class PlayerServiceImpl implements PlayerService {
 
 	@Override
 	public boolean delete(UUID uuid) {
+		movementRepository.delete(uuid);
 		return playerRepository.delete(uuid);
 	}
 

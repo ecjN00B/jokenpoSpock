@@ -22,6 +22,15 @@ public class PlayerRepository {
         return false;
 	}
 	
+	public boolean playerExists(UUID uuid) {
+		for(PlayerResponse p : this.players) {
+	        if(p != null && p.getUuid().equals(uuid)) {
+                return true;
+            }
+        }
+        return false;
+	}
+	
 	public List<PlayerResponse> findAll() {
 		return this.players;
 	}
