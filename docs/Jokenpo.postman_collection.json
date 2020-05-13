@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "c7cfba53-ec4e-467e-8a0f-f89f9617c7b9",
+		"name": "Jokenpo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET All Players",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/player",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Player By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/player/:playerId",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"player",
+						":playerId"
+					],
+					"variable": [
+						{
+							"key": "playerId",
+							"value": "65179330-9004-471f-93f7-c3153c900f60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Add Player",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"abc\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/player",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"player"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Update Player",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"uuid\": \"65179330-9004-471f-93f7-c3153c900f60\",\n\t\"name\": \"abcdefgh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/player",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"player"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Player By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/player/:playerId",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"player",
+						":playerId"
+					],
+					"variable": [
+						{
+							"key": "playerId",
+							"value": "65179330-9004-471f-93f7-c3153c900f60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Movements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/movement",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Movement By Player Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/movement/:playerId",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement",
+						":playerId"
+					],
+					"variable": [
+						{
+							"key": "playerId",
+							"value": "bc1aab1f-1e11-4afb-9eb3-96f74ac9d2ec"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Add Movement",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"playerId\": \"bc1aab1f-1e11-4afb-9eb3-96f74ac9d2ec\",\n\t\"movement\": \"SPOCK\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/movement",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Update Movement By Player Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"playerId\": \"bc1aab1f-1e11-4afb-9eb3-96f74ac9d2ec\",\n\t\"movement\": \"LAGARTO\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/movement",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Movement By Player Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/movement/:playerId",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movement",
+						":playerId"
+					],
+					"variable": [
+						{
+							"key": "playerId",
+							"value": "875962c1-0752-413e-9547-981ed2725200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Play Game",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/game/play",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"game",
+						"play"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
