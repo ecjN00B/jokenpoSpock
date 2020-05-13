@@ -18,12 +18,17 @@ Após esta constatação bastam duas condições para determinar o vencedor, ond
 - Caso o movimento do adversário seja o próximo ((mov1%5+1)%5) ou seja o terceiro em sequência ((mov1%5+3)%5) você é o vencedor;
 - Restando o cenário de derrota que não necessita ser verificado (é possível validá-lo aplicando a mesma regra do passo anterior).
 
+## API Reference
+
+- [Postman Docs](https://documenter.getpostman.com/view/3032535/SzmiWGHV?version=latest)
+- [Postman Collection](docs/Jokenpo.postman_collection.json)
+
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ecjN00B/usjt-condominium-election/tags).
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/ecjN00B/jokenpoSpock/tags).
 
 ## Authors
 
 * **Elias de Carvalho Junior** - [ecjN00B](https://github.com/ecjN00B)
 
-See also the list of [contributors](https://github.com/ecjN00B/usjt-condominium-election/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/ecjN00B/jokenpoSpock/contributors) who participated in this project.
